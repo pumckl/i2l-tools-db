@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Über die Tool-Datenbank & Mitmachen"
+  description="Wie die i2L Tool-Datenbank kuratiert wird: Aufnahmekriterien, Datenpflege, Anreicherung über die GitHub-API – und wie ihr selbst Tools vorschlagen könnt."
+>
+  <div class="container">
+    <article class="page-content">
+      <h1>Über die Tool-Datenbank</h1>
+      <p>
+        Diese Datenbank sammelt <strong>kuratierte Open-Source-Empfehlungen für Studium und Lehre</strong> –
+        ein Angebot des <a href="https://www.uni-flensburg.de/kompetenzzentrum-studium-lehre/innovation-learning-lab-i2l">Innovation Learning Lab (i2L)</a>
+        der Europa-Universität Flensburg.
+      </p>
+      <p>
+        Bewusst ist das <strong>kein</strong> automatischer Klon von Portalen wie alternativeto.net:
+        Deren Daten ließen sich nur über eine seit Jahren abgeschaltete API oder gegen die
+        Nutzungsbedingungen (Scraping) beziehen. Viel wichtiger aber: Lehr-Kontext entsteht durch
+        Einordnung – <em>wofür</em> brauche ich ein Werkzeug <em>in der Lehre</em>, was bedeutet es für
+        Datenschutz und Datenhoheit, wie hoch ist der Einführungsaufwand? Das kann nur menschliche
+        Kuratierung leisten.
+      </p>
+
+      <h2>Aufnahmekriterien</h2>
+      <ul>
+        <li>
+          <strong>Freie Lizenz</strong> (Open Source), bevorzugt mit aktiv entwickeltem,
+          öffentlichem Quellcode. Ausnahmen wie Obsidian werden klar als „proprietär“ markiert,
+          weil sie im Studium faktisch Standard sind – Transparenz vor Ideologie.
+        </li>
+        <li>
+          <strong>Bezug zu Studium &amp; Lehre</strong>: Einsatzszenarien, Zielgruppen und – wo
+          möglich – Good-Practice-Beispiele aus dem Uni-Alltag.
+        </li>
+        <li>
+          <strong>Datenschutz &amp; Datenhoheit</strong>: Wir weisen bei jedem Tool aus, ob und wie
+          es selfhostbar bzw. offline nutzbar ist – relevant für DSGVO und forschungsnahe Daten.
+        </li>
+        <li>
+          <strong>Ehrlicher Einführungsaufwand</strong>: Manches Werkzeug ist in 5 Minuten nutzbar,
+          anderes braucht einen betreuten Server. Wir schreiben das dazu, statt es kleinzureden.
+        </li>
+      </ul>
+
+      <h2>Wie die Daten gepflegt werden</h2>
+      <p>
+        Alle Einträge leben als kuratierte Datei (<code>src/data/tools.json</code>) im Repository –
+        für Menschen lesbar und editierbar, mit Validierung gegen Schema und Kategorien vor jedem
+        Build. Zusätzlich reichert ein Skript (<code>npm run data:refresh</code>) Metadaten über die
+        <a href="https://docs.github.com/en/rest" rel="noopener noreferrer" target="_blank">öffentliche GitHub-API</a>
+        an: Sterne (Beliebtheit), Lizenz (SPDX), letzter Push (Aktivität) und Archiviert-Status.
+        Ergebnisse werden 7 Tage gecacht, damit die Rate-Limits geschont werden.
+      </p>
+      <p>
+        Die Website selbst ist <strong>komplett statisch</strong>: keine Cookies, kein Tracking,
+        keine externen Dienste im Browser, Schriften werden lokal ausgeliefert.
+      </p>
+
+      <h2>Ein Tool vorschlagen</h2>
+      <ol>
+        <li>Repository klonen oder lokal auschecken.</li>
+        <li>
+          In <code>src/data/tools.json</code> einen Eintrag nach dem bestehenden Schema ergänzen
+          (ID, Name, Kategorie, Tagline, Beschreibung, Lizenz, Selfhosting, Aufwand, Links,
+          Einsatzszenarien, DSGVO-Hinweis).
+        </li>
+        <li>
+          <code>npm install &amp;&amp; npm run validate</code> ausführen – die Validierung prüft
+          Pflichtfelder, Kategorien und Lizenzangaben.
+        </li>
+        <li>Als Pull/Change-Request einreichen oder per Mail an <a href="mailto:i2l@uni-flensburg.de">i2l@uni-flensburg.de</a>.</li>
+      </ol>
+      <p class="note-box">
+        Kriterien für Vorschläge: freie Lizenz, klarer Lehrbezug, aktives Projekt (kein
+        „letzter Commit 2019“), und ein Satz, warum es <em>hier</em> besser passt als das
+        proprietäre Original.
+      </p>
+
+      <h2>Lizenzen &amp; Verantwortung</h2>
+      <p>
+        Die Tool-Beschreibungen dieser Datenbank stehen unter <strong>CC BY-SA 4.0</strong> und können
+        damit z. B. für eigene Hochschul-Sites übernommen werden. Alle eingetragenen Projekte gehören
+        ihren jeweiligen Rechteinhabern; die Einträge sind redaktionelle Empfehlungen, keine Werbung,
+        und es besteht keine wirtschaftliche Verbindung zu den Projekten.
+      </p>
+    </article>
+  </div>
+</Layout>

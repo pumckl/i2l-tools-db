@@ -1,0 +1,428 @@
+{
+  "fetchedAt": "2026-11-15T21:43:46.622Z",
+  "repos": {
+    "bigbluebutton/bigbluebutton": {
+      "stars": 9280,
+      "license": "LGPL-3.0",
+      "pushedAt": "2026-11-15T10:17:47Z",
+      "openIssues": 817,
+      "archived": false,
+      "homepage": "https://bigbluebutton.org",
+      "fetchedAt": "2026-11-15T21:43:18.350Z"
+    },
+    "jitsi/jitsi-meet": {
+      "stars": 30243,
+      "license": "Apache-2.0",
+      "pushedAt": "2026-11-14T04:51:47Z",
+      "openIssues": 204,
+      "archived": false,
+      "homepage": "https://jitsi.org/meet",
+      "fetchedAt": "2026-11-15T21:43:18.761Z"
+    },
+    "nextcloud/spreed": {
+      "stars": 2228,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T20:21:19Z",
+      "openIssues": 901,
+      "archived": false,
+      "homepage": "https://nextcloud.com/talk",
+      "fetchedAt": "2026-11-15T21:43:19.273Z"
+    },
+    "moodle/moodle": {
+      "stars": 7615,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-12T03:19:57Z",
+      "openIssues": 1,
+      "archived": false,
+      "homepage": "https://moodle.org/",
+      "fetchedAt": "2026-11-15T21:43:19.669Z"
+    },
+    "ILIAS-eLearning/ILIAS": {
+      "stars": 510,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-13T13:53:48Z",
+      "openIssues": 291,
+      "archived": false,
+      "homepage": "http://www.ilias.de/docu/goto_docu_cat_582.html",
+      "fetchedAt": "2026-11-15T21:43:20.071Z"
+    },
+    "OpenOLAT/OpenOLAT": {
+      "stars": 451,
+      "license": null,
+      "pushedAt": "2026-11-15T10:37:28Z",
+      "openIssues": 5,
+      "archived": false,
+      "homepage": "https://www.openolat.org",
+      "fetchedAt": "2026-11-15T21:43:20.477Z"
+    },
+    "instructure/canvas-lms": {
+      "stars": 6917,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-10T13:44:26Z",
+      "openIssues": 475,
+      "archived": false,
+      "homepage": "https://github.com/instructure/canvas-lms/wiki",
+      "fetchedAt": "2026-11-15T21:43:20.881Z"
+    },
+    "cryptpad/cryptpad": {
+      "stars": 8081,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-12T16:26:39Z",
+      "openIssues": 370,
+      "archived": false,
+      "homepage": "https://cryptpad.org",
+      "fetchedAt": "2026-11-15T21:43:21.272Z"
+    },
+    "hedgedoc/hedgedoc": {
+      "stars": 7515,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-14T18:50:29Z",
+      "openIssues": 283,
+      "archived": false,
+      "homepage": "https://hedgedoc.org",
+      "fetchedAt": "2026-11-15T21:43:21.692Z"
+    },
+    "ether/etherpad-lite": {
+      "stars": 18628,
+      "license": "Apache-2.0",
+      "pushedAt": "2026-11-13T15:32:45Z",
+      "openIssues": 16,
+      "archived": false,
+      "homepage": "https://etherpad.org",
+      "fetchedAt": "2026-11-15T21:43:22.548Z"
+    },
+    "nextcloud/server": {
+      "stars": 37531,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T21:36:29Z",
+      "openIssues": 3920,
+      "archived": false,
+      "homepage": "https://nextcloud.com",
+      "fetchedAt": "2026-11-15T21:43:22.951Z"
+    },
+    "haiwen/seafile": {
+      "stars": 15463,
+      "license": null,
+      "pushedAt": "2026-11-11T06:17:38Z",
+      "openIssues": 99,
+      "archived": false,
+      "homepage": "http://seafile.com/",
+      "fetchedAt": "2026-11-15T21:43:23.353Z"
+    },
+    "LibreOffice/core": {
+      "stars": 4642,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-15T15:46:58Z",
+      "openIssues": 2,
+      "archived": false,
+      "homepage": "https://www.libreoffice.org/",
+      "fetchedAt": "2026-11-15T21:43:23.774Z"
+    },
+    "ONLYOFFICE/DocumentServer": {
+      "stars": 7131,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-13T11:49:08Z",
+      "openIssues": 1139,
+      "archived": false,
+      "homepage": "https://www.onlyoffice.com/see-it-in-action",
+      "fetchedAt": "2026-11-15T21:43:24.185Z"
+    },
+    "CollaboraOnline/online": {
+      "stars": 3398,
+      "license": null,
+      "pushedAt": "2026-11-13T09:51:53Z",
+      "openIssues": 870,
+      "archived": false,
+      "homepage": "https://collaboraonline.com",
+      "fetchedAt": "2026-11-15T21:43:24.594Z"
+    },
+    "LimeSurvey/LimeSurvey": {
+      "stars": 3797,
+      "license": null,
+      "pushedAt": "2026-11-15T18:15:47Z",
+      "openIssues": 70,
+      "archived": false,
+      "homepage": "https://www.limesurvey.org",
+      "fetchedAt": "2026-11-15T21:43:25.004Z"
+    },
+    "nextcloud/forms": {
+      "stars": 384,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T15:32:07Z",
+      "openIssues": 108,
+      "archived": false,
+      "homepage": "https://apps.nextcloud.com/apps/forms",
+      "fetchedAt": "2026-11-15T21:43:25.382Z"
+    },
+    "ankitects/anki": {
+      "stars": 32825,
+      "license": null,
+      "pushedAt": "2026-11-14T01:51:18Z",
+      "openIssues": 603,
+      "archived": false,
+      "homepage": "https://apps.ankiweb.net",
+      "fetchedAt": "2026-11-15T21:43:26.130Z"
+    },
+    "zotero/zotero": {
+      "stars": 15953,
+      "license": null,
+      "pushedAt": "2026-11-14T18:50:57Z",
+      "openIssues": 1614,
+      "archived": false,
+      "homepage": "https://www.zotero.org",
+      "fetchedAt": "2026-11-15T21:43:26.540Z"
+    },
+    "JabRef/jabref": {
+      "stars": 4899,
+      "license": "MIT",
+      "pushedAt": "2026-11-15T21:38:43Z",
+      "openIssues": 476,
+      "archived": false,
+      "homepage": "https://www.jabref.org",
+      "fetchedAt": "2026-11-15T21:43:26.950Z"
+    },
+    "obsidianmd/obsidian-releases": {
+      "stars": 23305,
+      "license": null,
+      "pushedAt": "2026-11-15T21:20:45Z",
+      "openIssues": 4,
+      "archived": false,
+      "homepage": "https://obsidian.md",
+      "fetchedAt": "2026-11-15T21:43:27.462Z"
+    },
+    "laurent22/joplin": {
+      "stars": 57196,
+      "license": null,
+      "pushedAt": "2026-11-15T14:56:39Z",
+      "openIssues": 671,
+      "archived": false,
+      "homepage": "https://joplinapp.org",
+      "fetchedAt": "2026-11-15T21:43:27.875Z"
+    },
+    "logseq/logseq": {
+      "stars": 45604,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T16:47:06Z",
+      "openIssues": 1024,
+      "archived": false,
+      "homepage": "https://logseq.com",
+      "fetchedAt": "2026-11-15T21:43:28.266Z"
+    },
+    "standardnotes/app": {
+      "stars": 6721,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-13T22:21:20Z",
+      "openIssues": 98,
+      "archived": false,
+      "homepage": "https://standardnotes.com",
+      "fetchedAt": "2026-11-15T21:43:28.638Z"
+    },
+    "excalidraw/excalidraw": {
+      "stars": 135735,
+      "license": "MIT",
+      "pushedAt": "2026-11-15T16:23:22Z",
+      "openIssues": 3550,
+      "archived": false,
+      "homepage": "https://excalidraw.com",
+      "fetchedAt": "2026-11-15T21:43:29.049Z"
+    },
+    "jgraph/drawio": {
+      "stars": 9381,
+      "license": "Apache-2.0",
+      "pushedAt": "2026-11-04T18:20:39Z",
+      "openIssues": 42,
+      "archived": false,
+      "homepage": "https://www.drawio.com",
+      "fetchedAt": "2026-11-15T21:43:29.435Z"
+    },
+    "mermaid-js/mermaid": {
+      "stars": 91112,
+      "license": "MIT",
+      "pushedAt": "2026-11-15T14:56:42Z",
+      "openIssues": 2121,
+      "archived": false,
+      "homepage": "https://mermaid.ai/open-source/",
+      "fetchedAt": "2026-11-15T21:43:29.815Z"
+    },
+    "freeplane/freeplane": {
+      "stars": 4484,
+      "license": "GPL-2.0",
+      "pushedAt": "2026-11-15T21:24:31Z",
+      "openIssues": 479,
+      "archived": false,
+      "homepage": "https://www.freeplane.org",
+      "fetchedAt": "2026-11-15T21:43:30.207Z"
+    },
+    "hakimel/reveal.js": {
+      "stars": 72583,
+      "license": "MIT",
+      "pushedAt": "2026-09-30T19:38:13Z",
+      "openIssues": 932,
+      "archived": false,
+      "homepage": "https://revealjs.com",
+      "fetchedAt": "2026-11-15T21:43:30.582Z"
+    },
+    "marp-team/marp": {
+      "stars": 12752,
+      "license": "MIT",
+      "pushedAt": "2026-11-07T09:29:51Z",
+      "openIssues": 1,
+      "archived": false,
+      "homepage": "https://marp.app/",
+      "fetchedAt": "2026-11-15T21:43:30.989Z"
+    },
+    "audacity/audacity": {
+      "stars": 19078,
+      "license": null,
+      "pushedAt": "2026-11-13T17:42:12Z",
+      "openIssues": 1912,
+      "archived": false,
+      "homepage": "https://www.audacityteam.org/manual/getting-started/",
+      "fetchedAt": "2026-11-15T21:43:31.453Z"
+    },
+    "KDE/kdenlive": {
+      "stars": 6116,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-15T17:49:54Z",
+      "openIssues": 0,
+      "archived": false,
+      "homepage": "https://invent.kde.org/multimedia/kdenlive",
+      "fetchedAt": "2026-11-15T21:43:31.865Z"
+    },
+    "obsproject/obs-studio": {
+      "stars": 79624,
+      "license": "GPL-2.0",
+      "pushedAt": "2026-11-11T00:42:54Z",
+      "openIssues": 1209,
+      "archived": false,
+      "homepage": "https://obsproject.com",
+      "fetchedAt": "2026-11-15T21:43:32.275Z"
+    },
+    "GNOME/gimp": {
+      "stars": 6589,
+      "license": null,
+      "pushedAt": "2026-11-15T21:13:23Z",
+      "openIssues": 0,
+      "archived": false,
+      "homepage": "https://gitlab.gnome.org/GNOME/gimp",
+      "fetchedAt": "2026-11-15T21:43:32.652Z"
+    },
+    "inkscape/inkscape": {
+      "stars": 4126,
+      "license": null,
+      "pushedAt": "2022-03-03T20:52:00Z",
+      "openIssues": 1,
+      "archived": false,
+      "homepage": "http://www.inkscape.org/",
+      "fetchedAt": "2026-11-15T21:43:33.040Z"
+    },
+    "element-hq/element-web": {
+      "stars": 13660,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T20:30:07Z",
+      "openIssues": 3688,
+      "archived": false,
+      "homepage": "https://element.io",
+      "fetchedAt": "2026-11-15T21:43:33.437Z"
+    },
+    "mattermost/mattermost": {
+      "stars": 39614,
+      "license": null,
+      "pushedAt": "2026-11-15T11:11:08Z",
+      "openIssues": 1115,
+      "archived": false,
+      "homepage": "https://mattermost.com",
+      "fetchedAt": "2026-11-15T21:43:33.912Z"
+    },
+    "RocketChat/Rocket.Chat": {
+      "stars": 46536,
+      "license": null,
+      "pushedAt": "2026-11-15T20:41:56Z",
+      "openIssues": 4426,
+      "archived": false,
+      "homepage": "https://rocket.chat/",
+      "fetchedAt": "2026-11-15T21:43:34.424Z"
+    },
+    "mastodon/mastodon": {
+      "stars": 50627,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T19:22:15Z",
+      "openIssues": 4634,
+      "archived": false,
+      "homepage": "https://joinmastodon.org",
+      "fetchedAt": "2026-11-15T21:43:34.802Z"
+    },
+    "nextcloud/deck": {
+      "stars": 1441,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-15T09:53:41Z",
+      "openIssues": 918,
+      "archived": false,
+      "homepage": "https://apps.nextcloud.com/apps/deck",
+      "fetchedAt": "2026-11-15T21:43:35.378Z"
+    },
+    "wekan/wekan": {
+      "stars": 21172,
+      "license": "MIT",
+      "pushedAt": "2026-11-15T01:36:23Z",
+      "openIssues": 3,
+      "archived": false,
+      "homepage": "https://wekan.fi",
+      "fetchedAt": "2026-11-15T21:43:35.764Z"
+    },
+    "go-vikunja/vikunja": {
+      "stars": 6060,
+      "license": "AGPL-3.0",
+      "pushedAt": "2026-11-14T02:07:41Z",
+      "openIssues": 240,
+      "archived": false,
+      "homepage": "https://vikunja.io",
+      "fetchedAt": "2026-11-15T21:43:36.269Z"
+    },
+    "opf/openproject": {
+      "stars": 17404,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-15T20:59:45Z",
+      "openIssues": 336,
+      "archived": false,
+      "homepage": "https://www.openproject.org",
+      "fetchedAt": "2026-11-15T21:43:36.978Z"
+    },
+    "dokuwiki/dokuwiki": {
+      "stars": 4741,
+      "license": "GPL-2.0",
+      "pushedAt": "2026-11-11T15:46:15Z",
+      "openIssues": 478,
+      "archived": false,
+      "homepage": "http://www.dokuwiki.org",
+      "fetchedAt": "2026-11-15T21:43:37.384Z"
+    },
+    "BookStackApp/BookStack": {
+      "stars": 19144,
+      "license": "MIT",
+      "pushedAt": "2026-11-15T04:30:59Z",
+      "openIssues": 3,
+      "archived": false,
+      "homepage": "https://codeberg.org/bookstack/bookstack",
+      "fetchedAt": "2026-11-15T21:43:37.766Z"
+    },
+    "kiwix/kiwix-tools": {
+      "stars": 997,
+      "license": "GPL-3.0",
+      "pushedAt": "2026-11-09T13:59:20Z",
+      "openIssues": 54,
+      "archived": false,
+      "homepage": "https://download.kiwix.org/release/kiwix-tools/",
+      "fetchedAt": "2026-11-15T21:43:38.129Z"
+    },
+    "mawoka-myblock/classquiz": {
+      "stars": 740,
+      "license": "MPL-2.0",
+      "pushedAt": "2026-11-11T20:53:39Z",
+      "openIssues": 75,
+      "archived": false,
+      "homepage": "https://classquiz.de",
+      "fetchedAt": "2026-11-15T21:43:46.424Z"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+name: Build & Deploy (GitHub Pages)
+
+# Läuft bei:
+#   - Push auf main        → Build + Deploy auf GitHub Pages
+#   - Pull Requests        → nur Build (Validierung der Daten), kein Deploy
+#   - nächtlich (03:30 UTC)→ Build + Deploy mit frischen GitHub-Metadaten
+#   - manuell              → Actions-Tab → "Build & Deploy (GitHub Pages)" → Run workflow
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nicht parallel überschneiden: nur einen Deploy gleichzeitig
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quellcode auschecken
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      # Sterne, SPDX-Lizenz, letzter Push, Archiviert-Status frisch ziehen.
+      # GITHUB_TOKEN wird von GitHub automatisch bereitgestellt
+      # (Rate-Limit 1.000 Anfragen/h – reicht für ~47 Repos mit großem Puffer).
+      - name: GitHub-Metadaten anreichern
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/enrich.mjs
+
+      - name: Kuratierte Daten validieren
+        run: node scripts/validate-tools.mjs
+
+      - name: Statische Website bauen
+        run: npx astro build
+
+      - name: Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      - name: Build-Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    # Pull Requests nur bauen, nicht veröffentlichen
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages deployen
+        id: deployment
+        uses: actions/deploy-pages@v4

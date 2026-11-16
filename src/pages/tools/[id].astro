@@ -1,0 +1,226 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  AUFWAND,
+  SELFHOST_LABEL,
+  categoryBySlug,
+  enrichmentFor,
+  formatStars,
+  lastPushLabel,
+  tools,
+  type Tool,
+} from "../../lib/data";
+
+export function getStaticPaths() {
+  return tools.map((tool) => ({ params: { id: tool.id }, props: { tool } }));
+}
+
+interface Props {
+  tool: Tool;
+}
+
+const { tool } = Astro.props;
+const base = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "");
+const cat = categoryBySlug(tool.category);
+const enr = enrichmentFor(tool);
+
+const PLATFORM_LABELS: Record<string, string> = {
+  web: "Browser",
+  windows: "Windows",
+  macos: "macOS",
+  linux: "Linux",
+  android: "Android",
+  ios: "iOS",
+};
+
+const AUDIENCE_LABELS: Record<string, string> = {
+  lehrende: "Lehrende",
+  studierende: "Studierende",
+  mitarbeitende: "Mitarbeitende",
+};
+---
+
+<Layout title={`${tool.name} – ${tool.tagline}`}>
+  <section class="tool-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Sie sind hier">
+        <a href={`${base}/`}>Tool-Datenbank</a>
+        <span aria-hidden="true">/</span>
+        <a href={`${base}/#${cat.slug}`}>{cat.name}</a>
+        <span aria-hidden="true">/</span>
+        <b>{tool.name}</b>
+      </nav>
+      <h1>{tool.name}</h1>
+      <p class="tagline">{tool.tagline}</p>
+    </div>
+  </section>
+
+  <div class="container tool-layout">
+    <div class="main-col">
+      <h2>Was ist das?</h2>
+      <p>{tool.description}</p>
+
+      {
+        tool.useCases && tool.useCases.length > 0 && (
+          <>
+            <h2>Typische Einsatzszenarien</h2>
+            <ul class="pill-list">
+              {tool.useCases.map((u) => (
+                <li>{u}</li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
+      {
+        tool.dsGvo && (
+          <>
+            <h2>Datenschutz &amp; Datenhoheit</h2>
+            <p>{tool.dsGvo}</p>
+          </>
+        )
+      }
+
+      {
+        tool.goodPractice && (
+          <>
+            <h2>Good Practice aus der Lehre</h2>
+            <p class="note-box">{tool.goodPractice}</p>
+          </>
+        )
+      }
+    </div>
+
+    <aside aria-label="Steckbrief">
+      <div class="side-card">
+        <h2>Kategorie</h2>
+        <p class="big">
+          <b style={`color:${cat.fg}`}>{cat.name}</b><br />
+          {cat.description}
+        </p>
+      </div>
+
+      <div class="side-card">
+        <h2>Steckbrief</h2>
+        <ul class="meta-list">
+          <li>
+            Lizenz
+            <b>
+              {tool.licenseType === "open-source"
+                ? `frei · ${tool.license}`
+                : `proprietär · ${tool.license}`}
+            </b>
+          </li>
+          <li>Selfhosting<b>{SELFHOST_LABEL[tool.selfHost]}</b></li>
+          <li>
+            Einführungs­aufwand
+            <b>
+              <span class="aufwand-dots" style="color: var(--i2l-pink)" aria-hidden="true">
+                {"●".repeat(tool.aufwand)}{"○".repeat(3 - tool.aufwand)}
+              </span>
+              {AUFWAND[tool.aufwand]}
+            </b>
+          </li>
+          {
+            tool.platforms && (
+              <li>
+                Plattformen
+                <b>{tool.platforms.map((p) => PLATFORM_LABELS[p] ?? p).join(", ")}</b>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      {
+        tool.replaces && tool.replaces.length > 0 && (
+          <div class="side-card">
+            <h2>Proprietäre Alternativen</h2>
+            <p class="big">
+              Ersetzt bzw. ersetzt <b style="color: var(--i2l-pink)">{tool.replaces.join(", ")}</b> –
+              ohne Lizenzkosten.
+            </p>
+          </div>
+        )
+      }
+
+      <div class="side-card">
+        <h2>Links</h2>
+        <ul class="meta-list">
+          <li>
+            Projekt-Website
+            <b>
+              <a href={tool.website} rel="noopener noreferrer" target="_blank">
+                {new URL(tool.website).hostname}
+              </a>
+            </b>
+          </li>
+          {
+            tool.repo && (
+              <li>
+                Quellcode
+                <b>
+                  <a href={tool.repo} rel="noopener noreferrer" target="_blank">
+                    GitHub
+                  </a>
+                </b>
+              </li>
+            )
+          }
+          {
+            tool.docs && (
+              <li>
+                Doku
+                <b>
+                  <a href={tool.docs} rel="noopener noreferrer" target="_blank">
+                    Docs
+                  </a>
+                </b>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      {
+        enr && (
+          <div class="side-card">
+            <h2>Projekt-Gesundheit <span style="font-weight:400">(GitHub)</span></h2>
+            <ul class="meta-list">
+              <li>
+                Sterne
+                <b>★ {formatStars(enr.stars) || "–"}</b>
+              </li>
+              <li>
+                Aktivität
+                <b>{lastPushLabel(enr.pushedAt)}</b>
+              </li>
+              {
+                enr.license && (
+                  <li>
+                    Lizenz (SPDX)
+                    <b>{enr.license}</b>
+                  </li>
+                )
+              }
+              {
+                enr.archived && (
+                  <li>
+                    Status
+                    <b style="color: var(--euf-orange)">archiviert – Vorsicht</b>
+                  </li>
+                )
+              }
+            </ul>
+            <p style="font-size:0.8rem;color:var(--muted);margin:0.6rem 0 0">
+              Automatisch via GitHub-API ergänzt (
+              {enr.fetchedAt ? new Date(enr.fetchedAt).toLocaleDateString("de-DE") : "kein Stand"}),
+              siehe Über &amp; Mitmachen.
+            </p>
+          </div>
+        )
+      }
+    </aside>
+  </div>
+</Layout>

@@ -1,0 +1,80 @@
+---
+import {
+  categoryBySlug,
+  enrichmentFor,
+  formatStars,
+  lastPushLabel,
+  searchBlob,
+  type Tool,
+} from "../lib/data";
+
+interface Props {
+  tool: Tool;
+}
+
+const { tool } = Astro.props;
+const base = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "");
+const cat = categoryBySlug(tool.category);
+const enr = enrichmentFor(tool);
+const stars = formatStars(enr?.stars);
+const isOSS = tool.licenseType === "open-source";
+---
+
+<a
+  class="tool-card"
+  href={`${base}/tools/${tool.id}/`}
+  data-tool
+  data-search={searchBlob(tool)}
+  data-cat={tool.category}
+  data-license-type={tool.licenseType}
+  data-selfhost={tool.selfHost}
+  data-audience={(tool.audience ?? []).join(" ")}
+  data-stars={enr?.stars ?? 0}
+>
+  <div class="card-top">
+    <div class="badges">
+      <span class="badge badge-cat" style={`border-left-color:${cat.color}`}>{cat.short}</span>
+      <span
+        class={`badge badge-lic ${isOSS ? "" : "proprietär"}`}
+        title={isOSS ? "Freie Lizenz (Open Source)" : "Proprietäre Lizenz – bewusst als Ausnahme gekennzeichnet"}
+      >
+        {isOSS ? `Open Source · ${tool.license}` : `Proprietär · ${tool.license}`}
+      </span>
+      {
+        tool.selfHost !== "nein" && (
+          <span class="badge badge-host">
+            {tool.selfHost === "ja" ? "selfhostbar" : "teilw. selfhostbar"}
+          </span>
+        )
+      }
+    </div>
+    {
+      stars && (
+        <span class="stars" title={`GitHub Sterne & Aktivität (${lastPushLabel(enr?.pushedAt)})`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2z"
+            />
+          </svg>
+          {stars}
+        </span>
+      )
+    }
+  </div>
+
+  <h3>{tool.name}</h3>
+  <p class="tagline">{tool.tagline}</p>
+
+  {
+    tool.replaces && tool.replaces.length > 0 && (
+      <p class="replaces-line">
+        Alternative zu: <b>{tool.replaces.join(", ")}</b>
+      </p>
+    )
+  }
+
+  <div class="card-footer">
+    <span>{tool.useCases?.[0] ?? "Details ansehen"}</span>
+    <span aria-hidden="true">→</span>
+  </div>
+</a>

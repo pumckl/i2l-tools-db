@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "videokonferenzen",
+    "name": "Videokonferenzen & Online-Lehre",
+    "short": "Videokonferenzen",
+    "description": "Seminare, Sprechstunden und Besprechungen im Browser – datenschutzfreundlich und ohne Lizenzkosten.",
+    "color": "#00395b",
+    "soft": "#e3ecf3",
+    "fg": "#00395b"
+  },
+  {
+    "slug": "lms",
+    "name": "Lernplattformen (LMS)",
+    "short": "LMS",
+    "description": "Das Rückgrat digitaler Lehre: Kurse, Materialien, Aufgaben und Prüfungen an einem Ort.",
+    "color": "#00598e",
+    "soft": "#e0edf7",
+    "fg": "#00598e"
+  },
+  {
+    "slug": "kollaboration",
+    "name": "Kollaboratives Schreiben & Arbeiten",
+    "short": "Kollaboration",
+    "description": "Gemeinsame Dokumente, Tabellen und Dateien in Echtzeit – ohne Google oder Microsoft.",
+    "color": "#40ae49",
+    "soft": "#e8f6ea",
+    "fg": "#2f8a37"
+  },
+  {
+    "slug": "umfragen-quiz",
+    "name": "Umfragen, Quiz & Feedback",
+    "short": "Umfragen & Quiz",
+    "description": "Lehrevaluation, Live-Feedback und Terminabstimmung mit voller Datenkontrolle.",
+    "color": "#df00a9",
+    "soft": "#fce6f4",
+    "fg": "#b0008a"
+  },
+  {
+    "slug": "wissenschaft",
+    "name": "Wissenschaftliches Arbeiten",
+    "short": "Wissenschaft",
+    "description": "Von der Literaturverwaltung bis zum kollaborativen Manuskript.",
+    "color": "#307197",
+    "soft": "#e3eef5",
+    "fg": "#307197"
+  },
+  {
+    "slug": "notizen",
+    "name": "Notizen & Wissensmanagement",
+    "short": "Notizen",
+    "description": "Persistente Begleiter durchs Studium – lokal, verschlüsselt oder selbst gehostet.",
+    "color": "#f0593e",
+    "soft": "#fdeae6",
+    "fg": "#c94a34"
+  },
+  {
+    "slug": "visualisierung",
+    "name": "Mindmaps, Whiteboards & Diagramme",
+    "short": "Visualisierung",
+    "description": "Ideen strukturieren und gemeinsam visualisieren.",
+    "color": "#245470",
+    "soft": "#e5ecf1",
+    "fg": "#245470"
+  },
+  {
+    "slug": "praesentation",
+    "name": "Präsentationen",
+    "short": "Präsentation",
+    "description": "Folien ohne Lizenzschleifen: vom klassischen Slide-Deck bis zur HTML-Präsentation.",
+    "color": "#fab600",
+    "soft": "#fff5dc",
+    "fg": "#8a6800"
+  },
+  {
+    "slug": "medien",
+    "name": "Video, Audio & Screencasting",
+    "short": "Medien",
+    "description": "Lehrvideos produzieren, schneiden und unter eigener Kontrolle veröffentlichen.",
+    "color": "#275b7a",
+    "soft": "#e6eef4",
+    "fg": "#275b7a"
+  },
+  {
+    "slug": "kommunikation",
+    "name": "Kommunikation & Austausch",
+    "short": "Kommunikation",
+    "description": "Team- und Kurskommunikation ohne externe Plattform-Anbieter.",
+    "color": "#ff9914",
+    "soft": "#fff1dd",
+    "fg": "#8a5200"
+  }
+]

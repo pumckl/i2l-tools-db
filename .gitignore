@@ -1,0 +1,15 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# enrichment cache (ist in src/data/enriched.json persistiert)
+.cache/
+
+# env & system
+.env
+.env.*
+.DS_Store

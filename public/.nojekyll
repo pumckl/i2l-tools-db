@@ -1,0 +1,4 @@
+# Verhindert die Jekyll-Verarbeitung auf GitHub Pages.
+# (Bei Deploy via actions/deploy-pages ohnehin aus, aber schützt den Fall,
+# dass jemand später auf "Deploy from branch" umstellt – sonst würde das
+# Verzeichnis _astro/ von Jekyll ignoriert.)

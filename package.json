@@ -1,0 +1,18 @@
+{
+  "name": "i2l-tools-db",
+  "description": "i2L Tool-Datenbank – Open-Source-Empfehlungen für Studium und Lehre (Europa-Universität Flensburg)",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/validate-tools.mjs && astro build",
+    "preview": "astro preview",
+    "validate": "node scripts/validate-tools.mjs",
+    "data:refresh": "node scripts/enrich.mjs"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.0",
+    "astro": "^5.0.0"
+  }
+}

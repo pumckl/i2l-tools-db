@@ -1,0 +1,125 @@
+---
+import "../styles/global.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "@fontsource/roboto/900.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Open-Source-Empfehlungen für Studium und Lehre – kuratiert vom Innovation Learning Lab (i2L) der Europa-Universität Flensburg.",
+} = Astro.props;
+
+const nav = [
+  { href: "/", label: "Tool-Datenbank" },
+  { href: "/ueber/", label: "Über & Mitmachen" },
+  { href: "/rechtliches/", label: "Rechtliches" },
+];
+// Basis-Prefix, falls die Site unter einem Sub-Pfad läuft
+// (GitHub-Projekt-Site: <owner>.github.io/<repo>/). Bei eigener Domain "".
+const base = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "");
+const pathWithoutBase = Astro.url.pathname.startsWith(`${base}/`)
+  ? Astro.url.pathname.slice(base.length)
+  : Astro.url.pathname;
+const currentPath = pathWithoutBase.replace(/\/$/, "") + "/";
+const href = (p: string) => `${base}${p}`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · i2L Tool-Datenbank</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={href("/favicon.svg")} />
+  </head>
+  <body>
+    <a class="skiplink" href="#main">Zum Hauptinhalt springen</a>
+
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href={href("/")}>
+          <span class="brand-mark" aria-hidden="true">i2L</span>
+          <span class="brand-text">
+            <strong>Tool-Datenbank</strong>
+            <span>Innovation Learning Lab · Europa-Universität Flensburg</span>
+          </span>
+        </a>
+        <nav aria-label="Hauptnavigation">
+          {
+            nav.map((item) => (
+              <a
+                href={href(item.href)}
+                aria-current={currentPath === item.href.replace(/\/$/, "") + "/" ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h2>Innovation Learning Lab (i2L)</h2>
+            <p>
+              Ein Projekt des Kompetenzzentrums Studium &amp; Lehre (KSL), gefördert von der Stiftung
+              Innovation in der Hochschullehre.
+            </p>
+            <p>
+              <a href="https://www.uni-flensburg.de/kompetenzzentrum-studium-lehre/innovation-learning-lab-i2l">
+                Zur i2L-Website
+              </a>
+              ·
+              <a href="mailto:i2l@uni-flensburg.de">i2l@uni-flensburg.de</a>
+            </p>
+          </div>
+          <div>
+            <h2>Navigation</h2>
+            <ul>
+              {
+                nav.map((item) => (
+                  <li>
+                    <a href={href(item.href)}>{item.label}</a>
+                  </li>
+                ))
+              }
+              <li><a href={href("/tools/bigbluebutton/")}>Beispiel-Tool-Eintrag</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Europa-Universität Flensburg</h2>
+            <p>
+              Auf dem Campus 1<br />
+              24943 Flensburg<br />
+              Tel.: +49 461 805 02
+            </p>
+            <p>
+              <a href="https://www.uni-flensburg.de">www.uni-flensburg.de</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-note">
+          <p>
+            Diese Website läuft ohne Tracker, ohne Cookies und ohne externe Dienste – alle Inhalte werden
+            lokal ausgeliefert. Tool-Einträge sind redaktionelle Empfehlungen, keine Werbung.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

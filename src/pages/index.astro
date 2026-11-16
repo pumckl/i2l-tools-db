@@ -1,0 +1,180 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ToolCard from "../components/ToolCard.astro";
+import { tools, categories, enrichmentFor } from "../lib/data";
+
+const countOSS = tools.filter((t) => t.licenseType === "open-source").length;
+const countSelfHost = tools.filter((t) => t.selfHost !== "nein").length;
+
+const byCat = Object.fromEntries(categories.map((c) => [c.slug, 0]));
+for (const t of tools) byCat[t.category] = (byCat[t.category] ?? 0) + 1;
+---
+
+<Layout title="Open-Source-Tools für Studium & Lehre">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>
+        Freie Werkzeuge für <em>besseres Lehren und Lernen</em>
+      </h1>
+      <p>
+        Kuratierte Open-Source-Empfehlungen für Lehrende, Studierende und Mitarbeitende:
+        datenschutzfreundlich, ohne Lizenzkosten und mit konkreten Einsatzszenarien für
+        Studium &amp; Lehre an der EUF.
+      </p>
+      <div class="hero-meta">
+        <div><b>{tools.length}</b><span>Tools</span></div>
+        <div><b>{countOSS}</b><span>mit freier Lizenz</span></div>
+        <div><b>{countSelfHost}</b><span>self­hostbar</span></div>
+        <div><b>{categories.length}</b><span>Kategorien</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suche & Filter -->
+  <section class="controls" aria-label="Suche und Filter">
+    <div class="container">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M10 2a8 8 0 105.3 14l5.4 5.3 1.4-1.4-5.3-5.3A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+          ></path>
+        </svg>
+        <input
+          id="search"
+          type="search"
+          placeholder="Tool, Anwendungsfall oder proprietäres Original suchen … (z. B. „Zoom“, „Umfrage“, „Literatur“)"
+          aria-label="Tools durchsuchen"
+          autocomplete="off"
+        />
+      </div>
+      <div class="chips" role="group" aria-label="Nach Kategorie filtern">
+        <button class="chip" data-filter-cat aria-pressed="true">Alle</button>
+        {
+          categories.map((c) => (
+            <button class="chip" data-filter-cat data-cat={c.slug} aria-pressed="false">
+              {c.short}
+            </button>
+          ))
+        }
+      </div>
+      <div class="toggles">
+        <label>
+          <input type="checkbox" id="f-oss" checked />
+          nur Open Source
+        </label>
+        <label>
+          <input type="checkbox" id="f-host" />
+          selfhostbar
+        </label>
+        <label>
+          <input type="checkbox" id="f-teacher" />
+          für Lehrende
+        </label>
+        <label>
+          <input type="checkbox" id="f-students" />
+          für Studierende
+        </label>
+      </div>
+      <span class="result-count" id="result-count" aria-live="polite">
+        {tools.length} von {tools.length} Tools
+      </span>
+    </div>
+  </section>
+
+  <!-- Tool-Liste -->
+  <section aria-label="Tool-Empfehlungen">
+    <div class="container">
+      <div class="tool-grid" id="tool-grid">
+        {tools.map((tool) => <ToolCard tool={tool} />)}
+      </div>
+      <p class="empty-state" id="empty-state">
+        Kein Tool gefunden. Andere Suchbegriffe probieren – oder uns fehlt etwas?
+        <a href="/ueber/">Dann trage es bei uns ein →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Kategorienübersicht -->
+  <section aria-label="Kategorien">
+    <div class="container">
+      <h2 class="section-title">Nach Kategorie stöbern</h2>
+      <p class="section-sub">
+        Von Videokonferenzen bis wissenschaftlichem Arbeiten – jede Kategorie hat einen
+        eigenen Farbton im i2L-Design.
+      </p>
+      <div class="cat-grid">
+        {
+          categories.map((c) => (
+            <a class="cat-card" href={`#${c.slug}`} style={`border-left-color:${c.color}`} data-cat-link={c.slug}>
+              <h3 style={`color:${c.fg}`}>{c.name}</h3>
+              <p>{c.description}</p>
+              <span class="cat-count" style={`color:${c.fg}`}>{byCat[c.slug] ?? 0} Tools</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Filterlogik: Suche + Kategorie-Chips + Toggles – alles rein clientseitig,
+  // die Seite bleibt statisch (keine Server-Abfragen, keine Cookies).
+  const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-tool]"));
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter-cat]"));
+  const search = document.querySelector<HTMLInputElement>("#search");
+  const resultCount = document.querySelector<HTMLElement>("#result-count");
+  const emptyState = document.querySelector<HTMLElement>("#empty-state");
+  const fOss = document.querySelector<HTMLInputElement>("#f-oss");
+  const fHost = document.querySelector<HTMLInputElement>("#f-host");
+  const fTeacher = document.querySelector<HTMLInputElement>("#f-teacher");
+  const fStudents = document.querySelector<HTMLInputElement>("#f-students");
+
+  let activeCat: string | null = null;
+
+  function apply() {
+    const q = (search?.value ?? "").trim().toLowerCase();
+    let visible = 0;
+
+    for (const card of cards) {
+      const matchesQ = !q || (card.dataset.search ?? "").includes(q);
+      const matchesCat = !activeCat || card.dataset.cat === activeCat;
+      const matchesOss = !fOss?.checked || card.dataset.licenseType === "open-source";
+      const matchesHost =
+        !fHost?.checked || ["ja", "teilweise"].includes(card.dataset.selfHost ?? "");
+      const matchesAud =
+        (!fTeacher?.checked || (card.dataset.audience ?? "").includes("lehrende")) &&
+        (!fStudents?.checked || (card.dataset.audience ?? "").includes("studierende"));
+
+      const show = matchesQ && matchesCat && matchesOss && matchesHost && matchesAud;
+      card.classList.toggle("hidden-card", !show);
+      if (show) visible++;
+    }
+
+    if (resultCount) resultCount.textContent = `${visible} von ${cards.length} Tools`;
+    emptyState?.classList.toggle("visible", visible === 0);
+  }
+
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      activeCat = chip.dataset.cat ?? null;
+      for (const c of chips) c.setAttribute("aria-pressed", String(c === chip));
+      apply();
+    });
+  }
+
+  search?.addEventListener("input", apply);
+  for (const el of [fOss, fHost, fTeacher, fStudents]) el?.addEventListener("change", apply);
+
+  // Kategorie-Verweise aus der Übersicht: setzt den passenden Chip aktiv.
+  document.querySelectorAll<HTMLElement>("[data-cat-link]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const slug = link.dataset.catLink;
+      const chip = chips.find((c) => c.dataset.cat === slug);
+      chip?.click();
+      chip?.scrollIntoView({ block: "center", behavior: "smooth" });
+    });
+  });
+</script>
