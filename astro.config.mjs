@@ -17,7 +17,7 @@ import { defineConfig } from "astro/config";
 // `site` wirkt auf Canonical-/OG-Tags, `base` auf die Pfadstruktur.
 // ============================================================
 export default defineConfig({
-  site: "https://tools.i2l.uni-flensburg.de",
-  // base: "/i2l-tools-db/",
+  site: "https://pumckl.github.io/i2l-tools-db",
+  base: "/i2l-tools-db/",
   trailingSlash: "always",
 });
